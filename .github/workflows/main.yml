@@ -1,0 +1,38 @@
+name: release
+
+on: push
+
+jobs:
+  upload-plugin-code:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+
+    - uses: leafo/gh-actions-lua@v5
+      with:
+        luaVersion: "5.1.5"
+
+    - uses: leafo/gh-actions-luarocks@v2
+
+    - name: build
+      run: |
+        luarocks make --pack-binary-rock
+
+    - name: unzip
+      run: |
+        unzip kong-oidc-1.6.0-1.all.rock
+    
+    - name: repack
+      run: |
+        mkdir kong-oidc-1.6.0
+        cp LICENSE kong-oidc-1.6.0
+        cp lua/kong/plugins/oidc/*.lua kong-oidc-1.6.0/
+        zip -r kong-oidc-1.6.0.zip kong-oidc-1.6.0
+
+    - name: Upload to release
+      uses: JasonEtco/upload-to-release@master
+      with:
+        args: kong-oidc-1.6.0.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
