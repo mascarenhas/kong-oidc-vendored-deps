@@ -49,12 +49,12 @@ return {
               type = "record",
               required = false,
               fields = {
-                { authorization_endpoint = { type = "string", required = true } },
-                { token_endpoint = { type = "string", required = true } },
-                { userinfo_endpoint = { type = "string", required = true } },
-                { jwks_uri = { type = "string", required = true } },
-                { revocation_endpoint = { type = "string", required = true } },
-                { issuer = { type = "string", required = true } },
+                { authorization_endpoint = { type = "string", required = false } },
+                { token_endpoint = { type = "string", required = false } },
+                { userinfo_endpoint = { type = "string", required = false } },
+                { jwks_uri = { type = "string", required = false } },
+                { revocation_endpoint = { type = "string", required = false } },
+                { issuer = { type = "string", required = false } },
                 { introspection_endpoint = { type = "string", required = false } },
                 { end_session_endpoint = { type = "string", required = false  } }
               }
