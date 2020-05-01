@@ -9,6 +9,11 @@ jobs:
     steps:
     - uses: actions/checkout@master
 
+    - name: Checkout submodules
+      uses: srt32/git-actions@v0.0.3
+      with:
+        args: git submodule update --init --recursive
+
     - uses: leafo/gh-actions-lua@v5
       with:
         luaVersion: "5.1.5"
@@ -30,9 +35,8 @@ jobs:
         cp lua/kong/plugins/oidc/*.lua kong-oidc-1.6.0/
         zip -r kong-oidc-1.6.0.zip kong-oidc-1.6.0
 
-    - name: Upload to release
-      uses: JasonEtco/upload-to-release@master
+    - name: archive
+      uses: actions/upload-artifact@v1
       with:
-        args: kong-oidc-1.6.0.zip
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        name: plugin-code
+        path: kong-oidc-1.6.0.zip
