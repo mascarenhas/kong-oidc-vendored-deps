@@ -24,7 +24,7 @@ jobs:
       run: |
         luarocks make --pack-binary-rock
 
-    - name: unzip and repack
+    - name: unzip and move files
       run: |
         mkdir output
         mv kong-oidc-1.6.0-1.all.rock output
@@ -34,10 +34,9 @@ jobs:
         mkdir kong-oidc-1.6.0
         cp LICENSE kong-oidc-1.6.0/
         cp output/lua/kong/plugins/oidc/*.lua kong-oidc-1.6.0/
-        zip -r kong-oidc-1.6.0.zip kong-oidc-1.6.0
     
     - name: upload artifact
       uses: actions/upload-artifact@v1
       with:
-        name: plugin-code
-        path: kong-oidc-1.6.0.zip
+        name: kong-oidc-1.6.0
+        path: kong-oidc-1.6.0
