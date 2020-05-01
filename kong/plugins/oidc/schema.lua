@@ -41,7 +41,8 @@ return {
                       { secure = { type = "boolean", default = true } }
                     }
                   }
-                }
+                },
+                { secret = { type = "string", required = false } }
               }
             }
           },
