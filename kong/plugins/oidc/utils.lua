@@ -31,6 +31,7 @@ function M.get_options(config, ngx)
     bearer_only = config.bearer_only,
     realm = config.realm,
     redirect_uri = config.redirect_uri,
+    redirect_uri_scheme = config.redirect_uri_scheme,
     scope = config.scope,
     prompt = config.prompt,
     response_type = config.response_type,

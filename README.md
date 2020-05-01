@@ -51,7 +51,6 @@ ngx.ctx.authenticated_consumer = {
 **kong-oidc** depends on the following package:
 
 - [`lua-resty-openidc`](https://github.com/pingidentity/lua-resty-openidc/)
-  - [`lua-resty-session`](https://github.com/bungle/lua-resty-session)
 
 
 ## Installation
