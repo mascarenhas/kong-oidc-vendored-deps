@@ -5,11 +5,11 @@ TestHandler = require("test.unit.mockable_case"):extend()
 function TestHandler:setUp()
   TestHandler.super:setUp()
 
-  package.loaded["resty.openidc"] = nil
+  package.loaded["kong.plugins.oidc.openidc"] = nil
   self.module_resty = {openidc = {
     authenticate = function(...) return {}, nil end }
   }
-  package.preload["resty.openidc"] = function()
+  package.preload["kong.plugins.oidc.openidc"] = function()
     return self.module_resty.openidc
   end
 

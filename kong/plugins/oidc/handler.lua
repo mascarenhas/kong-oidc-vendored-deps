@@ -82,7 +82,7 @@ function make_oidc(oidcConfig, oidcSessionConfig)
     end
   end
 
-  local res, err, original_url, session = require("resty.openidc").authenticate(oidcConfig, nil, unauth_action, oidcSessionConfig)
+  local res, err, original_url, session = require("kong.plugins.oidc.openidc").authenticate(oidcConfig, nil, unauth_action, oidcSessionConfig)
 
   -- @todo: add unit test to check for session:close()
   -- handle and close session, prevent locking
@@ -109,7 +109,7 @@ end
 
 function introspect(oidcConfig)
   if utils.has_bearer_access_token() or oidcConfig.bearer_only == "yes" then
-    local res, err, original_url, session = require("resty.openidc").introspect(oidcConfig)
+    local res, err, original_url, session = require("kong.plugins.oidc.openidc").introspect(oidcConfig)
 
     -- @todo: add unit test to check for session:close()
     -- handle and close session, prevent locking

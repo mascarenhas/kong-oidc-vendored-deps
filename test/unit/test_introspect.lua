@@ -33,7 +33,7 @@ function TestIntrospect:test_access_token_exists()
 end
 
 function TestIntrospect:test_no_authorization_header()
-  package.loaded["resty.openidc"].authenticate = function(...) return {}, nil end
+  package.loaded["kong.plugins.oidc.openidc"].authenticate = function(...) return {}, nil end
   ngx.req.get_headers = function() return {} end
 
   local headers = {}
