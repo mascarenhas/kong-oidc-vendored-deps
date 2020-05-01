@@ -1,8 +1,8 @@
 package = "kong-oidc"
-version = "1.5.1"
+version = "1.6.0"
 source = {
-    url = "git://github.com/skylineos/kong-oidc",
-    tag = "v1.5.1",
+    url = "git://github.com/mascarenhas/kong-oidc",
+    tag = "v1.6.0",
     dir = "kong-oidc"
 }
 description = {
@@ -22,7 +22,6 @@ description = {
     license = "Apache 2.0"
 }
 dependencies = {
-    "lua-resty-openidc ~> 1.6.1-1"
 }
 build = {
     type = "builtin",
@@ -31,6 +30,11 @@ build = {
     ["kong.plugins.oidc.handler"] = "kong/plugins/oidc/handler.lua",
     ["kong.plugins.oidc.schema"] = "kong/plugins/oidc/schema.lua",
     ["kong.plugins.oidc.session"] = "kong/plugins/oidc/session.lua",
-    ["kong.plugins.oidc.utils"] = "kong/plugins/oidc/utils.lua"
+    ["kong.plugins.oidc.utils"] = "kong/plugins/oidc/utils.lua",
+    ['kong.plugins.oidc.jwt'] = 'vendor/lua-resty-jwt/lib/resty/jwt.lua',
+    ['kong.plugins.oidc.evp'] = 'vendor/lua-resty-jwt/lib/resty/evp.lua',
+    ['kong.plugins.oidc.jwt-validators'] = 'vendor/lua-resty-jwt/lib/resty/jwt-validators.lua',
+    ["kong.plugins.oidc.hmac"] = 'vendor/lua-resty-jwt/third-party/lua-resty-hmac/lib/resty/hmac.lua',
+    ["kong.plugins.oidc.openidc"] = "vendor/lua-resty-openidc/lib/resty/openidc.lua"
     }
 }
