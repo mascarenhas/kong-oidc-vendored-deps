@@ -1,0 +1,6 @@
+[submodule "vendor/lua-resty-openidc"]
+	path = vendor/lua-resty-openidc
+	url = git@github.com:mascarenhas/lua-resty-openidc.git
+[submodule "vendor/lua-resty-jwt"]
+	path = vendor/lua-resty-jwt
+	url = git@github.com:mascarenhas/lua-resty-jwt.git
