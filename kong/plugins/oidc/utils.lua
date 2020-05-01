@@ -16,7 +16,7 @@ function M.get_options(config, ngx)
 
   -- check to see if override is provided
   local discovery = config.discovery
-  if config.discovery_override then
+  if type(config.discovery_override) == "table" and config.discovery_override.authorization_endpoint then
     discovery = config.discovery_override
   end
 
